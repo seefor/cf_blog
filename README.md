@@ -35,44 +35,38 @@ A lightning-fast, SEO-optimized blog built with Astro and deployed on Cloudflare
 
 ### Prerequisites
 
-- Node.js 18+ 
-- npm or yarn
-- Git
 - GitHub account
-
-### Installation
+- Cloudflare Free Acount
+  
+### 🚀 Deployment
 
 1. **Clone the repository**
    ```bash
    git clone https://github.com/seefor/cf_blog.git
    cd cf_blog
+   cd cf_video
+   gh repo create cf_video --private --source=. --remote=origin --push
    ```
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Set up GitHub Discussions for comments**
+2. **Set up GitHub Discussions for comments**
    - Go to your repository Settings → Features
    - Enable "Discussions" ✅
    - Install Giscus app: https://github.com/apps/giscus
    - Configure at https://giscus.app and update `src/components/Comments.astro`
 
-4. **Start development server**
-   ```bash
-   npm run dev
-   ```
+3. **Connect to Cloudflare Pages**:
+   - Go to [Cloudflare Pages](https://pages.cloudflare.com/)
+   - Click "Create a project" → "Connect to Git"
+   - Select your repository
+     
+4. **Configure build settings**:
+   - Framework preset: `Astro`
+   - Build command: `npm run build`
+   - Build output directory: `dist`
+   - Root directory: `/` (leave empty)
+     
+5. **Deploy**: Click "Save and Deploy"
 
-5. **Open your browser**
-   Navigate to `http://localhost:4321`
-
-### Build for Production
-
-```bash
-npm run build
-npm run preview
-```
 
 ## 📝 Content Management
 
@@ -120,44 +114,6 @@ npm run preview
 | `image` | string | ❌ | Social share image |
 | `updatedDate` | date | ❌ | Last updated date |
 
-## 🚀 Deployment
-
-### Method 1: Direct Cloudflare Pages (Recommended)
-
-1. **Push to GitHub**: Commit and push your code to GitHub
-2. **Connect to Cloudflare Pages**:
-   - Go to [Cloudflare Pages](https://pages.cloudflare.com/)
-   - Click "Create a project" → "Connect to Git"
-   - Select your repository
-3. **Configure build settings**:
-   - Framework preset: `Astro`
-   - Build command: `npm run build`
-   - Build output directory: `dist`
-   - Root directory: `/` (leave empty)
-4. **Deploy**: Click "Save and Deploy"
-
-### Method 2: GitHub Actions (Advanced)
-
-1. **Get Cloudflare credentials**:
-   - API Token: Cloudflare Dashboard → My Profile → API Tokens → Create Token
-   - Account ID: Cloudflare Dashboard → Right sidebar
-
-2. **Add GitHub repository secrets**:
-   - `CLOUDFLARE_API_TOKEN`: Your API token
-   - `CLOUDFLARE_ACCOUNT_ID`: Your account ID
-   - `LHCI_GITHUB_APP_TOKEN`: Lighthouse CI token (optional)
-
-3. **Update workflow**: Edit `.github/workflows/deploy.yml` and change `projectName: your-blog` to your actual project name
-
-4. **Push to main branch** to trigger deployment
-
-### Environment Variables (Optional)
-
-Add these in Cloudflare Pages → Settings → Environment variables:
-```
-NODE_VERSION=18
-ASTRO_TELEMETRY_DISABLED=1
-```
 
 ### Custom Domain Setup
 
@@ -171,20 +127,6 @@ ASTRO_TELEMETRY_DISABLED=1
    ```
 3. **Update DNS**: Follow Cloudflare's DNS instructions
 
-### Comments Setup
-
-Comments are powered by GitHub Discussions and are required for full functionality:
-
-1. **Enable GitHub Discussions**: Repository Settings → Features → Discussions ✅
-2. **Install Giscus**: Visit https://github.com/apps/giscus and install for your repository
-3. **Configure**: Go to https://giscus.app and get your configuration values
-4. **Update**: Edit `src/components/Comments.astro` with your actual values:
-   ```javascript
-   const REPO = "your-username/your-repo";
-   const REPO_ID = "your-repo-id";
-   const CATEGORY = "General";
-   const CATEGORY_ID = "your-category-id";
-   ```
 
 ## 🎨 Customization
 
