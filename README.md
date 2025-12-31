@@ -44,7 +44,6 @@ A lightning-fast, SEO-optimized blog built with Astro and deployed on Cloudflare
    ```bash
    git clone https://github.com/seefor/cf_blog.git
    cd cf_blog
-   cd cf_video
    gh repo create cf_video --private --source=. --remote=origin --push
    ```
 
